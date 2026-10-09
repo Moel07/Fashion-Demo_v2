@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="St@yLE — label ready-to-wear lokal dari Pontianak. Produksi terbatas per desain, size chart jujur, bisa tukar ukuran.">
+  <title>St@yLE Ready-to-Wear Lokal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: lookbook editorial — full-bleed hero, lebar konten 1200px, grid kartu 2→3 kolom, mobile-first.
+   Tema tunggal yang disengaja (palet merek), semua warna diset eksplisit. */
+:root{
+  --bg:#FAF7F2; --espresso:#3E2C23; --terra:#C96F4A; --ink:#241C17; --blush:#F3E8E0;
+  --muted:#6F5E53; --line:#E4D8CC; --paper:#FFFDF9; --terra-dark:#A9563A;
+  --f-display:"Fraunces","Playfair Display",Georgia,"Times New Roman",serif;
+  --f-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:0.875rem; --wrap:1200px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+p{margin:0}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:1rem}
+@media(min-width:768px){.wrap{padding-inline:2rem}}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
+.price{font-variant-numeric:tabular-nums;font-weight:600;color:var(--espresso)}
+
+/* Tombol */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.4rem;border-radius:999px;font-weight:600;font-size:.92rem;text-decoration:none;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn-primary{background:var(--espresso);color:var(--bg)}
+.btn-primary:hover{background:var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+.btn-light{background:var(--bg);color:var(--espresso)}
+.btn-light:hover{background:var(--blush)}
+.btn-outline-light{border-color:var(--bg);color:var(--bg);background:transparent}
+.btn-outline-light:hover{background:var(--bg);color:var(--espresso)}
+.btn-wa{background:var(--terra);color:var(--bg);padding:.55rem 1rem;font-size:.85rem}
+.btn-wa:hover{background:var(--terra-dark)}
+
+/* Bilah pengumuman + navbar */
+.announce{background:var(--espresso);color:var(--blush);font-size:.78rem;text-align:center;padding:.5rem 1rem;letter-spacing:.02em}
+.announce b{color:var(--bg);font-weight:600}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(250,247,242,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:1rem;height:4rem}
+.logo{font-family:var(--f-display);font-size:1.6rem;text-decoration:none;color:var(--espresso);letter-spacing:-.02em;display:flex;align-items:baseline;gap:.45rem}
+.logo .at{color:var(--terra);font-style:italic}
+.logo small{font-family:var(--f-body);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:none}
+@media(min-width:900px){.logo small{display:inline}}
+.nav-links{display:none;gap:1.75rem;margin-left:auto}
+.nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;color:var(--ink);padding-block:.25rem;border-bottom:1px solid transparent}
+.nav-links a:hover,.nav-links a.active{border-color:var(--terra)}
+.nav-actions{display:flex;align-items:center;gap:.6rem;margin-left:auto}
+@media(min-width:820px){.nav-links{display:flex}.nav-actions{margin-left:1.5rem}.burger{display:none!important}}
+.icon-btn{position:relative;width:2.5rem;height:2.5rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;color:var(--espresso);text-decoration:none}
+.icon-btn:hover{border-color:var(--espresso)}
+.count{position:absolute;top:-4px;right:-4px;min-width:1.15rem;height:1.15rem;padding:0 .25rem;border-radius:999px;background:var(--terra);color:var(--bg);font-size:.65rem;font-weight:700;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.btn-wa .lbl{display:none}
+@media(min-width:480px){.btn-wa .lbl{display:inline}}
+.mobile-menu{border-top:1px solid var(--line);padding-block:.5rem 1rem}
+.mobile-menu a{display:block;padding:.7rem 0;text-decoration:none;font-family:var(--f-display);font-size:1.3rem;border-bottom:1px solid var(--line)}
+
+/* Bingkai foto */
+.ph{position:relative;overflow:hidden;border-radius:var(--r);background:var(--blush);isolation:isolate}
+.ph::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 30% 15%,rgba(255,253,249,.55),transparent 60%);z-index:1;pointer-events:none}
+.ph-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ph svg.garment{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:58%;height:auto;z-index:2}
+.ph .ph-tag{position:absolute;left:.75rem;bottom:.6rem;z-index:3;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(36,28,23,.55)}
+
+/* Hero */
+.hero{position:relative;min-height:min(86vh,720px);display:flex;align-items:flex-end;overflow:hidden;color:var(--bg);background:linear-gradient(160deg,#B98A6E 0%,#8A5E46 45%,#3E2C23 100%)}
+.hero-art{position:absolute;inset:0;z-index:0}
+.hero-art .ph-img{object-position:62% 30%}
+.hero-art svg{position:absolute;right:-6%;top:50%;transform:translateY(-50%);height:118%;width:auto;opacity:.9}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(36,28,23,.82) 0%,rgba(36,28,23,.35) 45%,rgba(36,28,23,0) 75%)}
+.hero-in{position:relative;z-index:2;padding-block:5rem 3rem;width:100%}
+.hero .eyebrow{color:var(--blush)}
+.hero h1{font-size:clamp(2.6rem,9vw,5.6rem);font-weight:300;max-width:13ch;margin-top:.9rem}
+.hero h1 em{font-style:italic;color:#F2C4AC}
+.hero p.sub{margin-top:1.1rem;max-width:44ch;font-size:1.02rem;color:#F3E8E0}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.hero-meta{position:absolute;z-index:2;top:1.25rem;right:1rem;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.75);text-align:right}
+@media(min-width:768px){.hero-meta{right:2rem}.hero-in{padding-block:6rem 4.5rem}}
+
+/* Trust strip */
+.trust{border-bottom:1px solid var(--line);background:var(--paper)}
+.trust ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;}
+.trust li{display:flex;align-items:center;gap:.75rem;padding:1rem 0;font-weight:500;font-size:.92rem;border-bottom:1px solid var(--line)}
+.trust li:last-child{border-bottom:0}
+.trust svg{flex:none;color:var(--terra)}
+@media(min-width:720px){.trust ul{grid-template-columns:repeat(3,1fr)}.trust li{border-bottom:0;justify-content:center;padding:1.15rem 0}.trust li+li{border-left:1px solid var(--line)}}
+
+/* Section */
+.section{padding-block:4.5rem}
+@media(min-width:768px){.section{padding-block:6rem}}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2.25rem}
+.sec-head h2{font-size:clamp(2rem,5vw,3.1rem);margin-top:.5rem}
+.sec-head p{color:var(--muted);max-width:40ch;font-size:.95rem}
+.link-arrow{font-weight:600;font-size:.9rem;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px}
+.link-arrow:hover{color:var(--terra);border-color:var(--terra)}
+
+/* Kartu produk */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.75rem 1rem}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:2.75rem 1.75rem}}
+.card{display:flex;flex-direction:column;gap:.8rem;min-width:0}
+.card .ph{aspect-ratio:3/4;max-width:100%;transition:transform .5s ease}
+.card:hover .ph{transform:translateY(-3px)}
+.badge{position:absolute;top:.7rem;left:.7rem;z-index:3;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.32rem .6rem;border-radius:999px;background:var(--paper);color:var(--espresso);border:1px solid var(--line)}
+.badge.restock{background:var(--espresso);color:var(--bg);border-color:var(--espresso)}
+.badge.sisa{background:var(--terra);color:var(--bg);border-color:var(--terra)}
+.heart{position:absolute;top:.6rem;right:.6rem;z-index:3;width:2.2rem;height:2.2rem;border-radius:999px;border:0;background:rgba(255,253,249,.92);color:var(--espresso);display:grid;place-items:center;transition:transform .2s}
+.heart:hover{transform:scale(1.08)}
+.heart[aria-pressed="true"] svg path{fill:var(--terra);stroke:var(--terra)}
+.card-body{display:flex;flex-direction:column;gap:.2rem;min-width:0}
+.card-meta{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card h3{font-size:1.2rem;line-height:1.25}
+@media(min-width:900px){.card h3{font-size:1.35rem}}
+.card-row{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem;margin-top:.35rem}
+.card-row a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--terra);border-bottom:1px solid currentColor}
+.card-row a:hover{color:var(--terra-dark)}
+.stock-note{font-size:.76rem;color:var(--muted)}
+
+/* Kategori */
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+@media(min-width:900px){.cats{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}}
+.cat{text-decoration:none;display:flex;flex-direction:column;gap:.7rem}
+.cat .ph{aspect-ratio:4/5;max-width:100%}
+.cat .ph svg.garment{width:52%}
+.cat-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:.6rem}
+.cat-row h3{font-size:1.45rem}
+.cat-row span{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.cat:hover h3{color:var(--terra)}
+
+/* Kenapa terbatas */
+.why{background:var(--blush)}
+.why-grid{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:900px){.why-grid{grid-template-columns:1.05fr 1fr;gap:4.5rem}}
+.why .ph{aspect-ratio:4/3;max-width:100%;background:linear-gradient(150deg,#E6CDB9,#C9A189)}
+.why .ph svg{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+.why h2{font-size:clamp(2.1rem,5vw,3.4rem);margin-top:.6rem}
+.why h2 em{font-style:italic;color:var(--terra)}
+.why .lead{margin-top:1.25rem;font-size:1.05rem;max-width:52ch}
+.why .body{margin-top:1rem;color:var(--muted);max-width:52ch}
+.numbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #DCC6B5}
+.numbers b{display:block;font-family:var(--f-display);font-weight:400;font-size:clamp(1.8rem,5vw,2.6rem);color:var(--espresso);font-variant-numeric:tabular-nums;line-height:1}
+.numbers span{display:block;margin-top:.4rem;font-size:.78rem;color:var(--muted);line-height:1.4}
+
+/* Testimoni */
+.testi{display:grid;gap:1rem}
+@media(min-width:900px){.testi{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}}
+.quote{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:1.75rem;display:flex;flex-direction:column;gap:1.25rem}
+.quote .mark{font-family:var(--f-display);font-size:3rem;line-height:.6;color:var(--terra);height:1.4rem}
+.quote p{font-family:var(--f-display);font-size:1.15rem;line-height:1.45;font-weight:300}
+.quote .who{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:.75rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem}
+.quote .who b{display:block;font-weight:600}
+.quote .who span{color:var(--muted);font-size:.8rem}
+.quote .fit{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--espresso);background:var(--blush);padding:.3rem .55rem;border-radius:999px;white-space:nowrap}
+
+/* CTA band */
+.cta-band{background:var(--terra);color:var(--bg)}
+.cta-in{padding-block:4rem;display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start}
+@media(min-width:900px){.cta-in{flex-direction:row;align-items:center;justify-content:space-between;padding-block:5rem}}
+.cta-band h2{font-size:clamp(2rem,5.5vw,3.5rem);max-width:18ch;font-weight:300}
+.cta-band h2 em{font-style:italic}
+
+/* Footer */
+footer{background:var(--espresso);color:var(--blush);padding-block:4rem 2rem;font-size:.9rem}
+.foot-grid{display:grid;gap:2.5rem}
+@media(min-width:900px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr}}
+footer .logo{color:var(--bg)}
+footer p.desc{margin-top:1rem;max-width:36ch;color:#D9C7BA}
+footer h4{margin:0 0 .9rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#E7B39A;font-weight:600}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+footer a{text-decoration:none;color:var(--blush)}
+footer a:hover{color:var(--bg);text-decoration:underline}
+footer .hours{font-variant-numeric:tabular-nums}
+.foot-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(243,232,224,.18);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem;font-size:.8rem;color:#BFA999}
+
+/* Halaman lain */
+.page-head{padding-block:3.5rem 2rem;border-bottom:1px solid var(--line)}
+.page-head h1{font-size:clamp(2.4rem,7vw,4rem);margin-top:.5rem}
+.page-head p{margin-top:.75rem;color:var(--muted);max-width:56ch}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.chip{padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-size:.85rem;font-weight:500;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--espresso);border-color:var(--espresso);color:var(--bg)}
+.pdp{display:grid;gap:2rem;padding-block:2.5rem 4rem}
+@media(min-width:900px){.pdp{grid-template-columns:1.1fr 1fr;gap:4rem;padding-block:3.5rem 6rem}}
+.pdp .ph{aspect-ratio:4/5;max-width:100%}
+.pdp h1{font-size:clamp(2.2rem,5vw,3.3rem);margin-top:.5rem}
+.pdp .price{font-size:1.4rem;display:block;margin-top:.75rem}
+.pdp .desc{margin-top:1.25rem;color:var(--muted);max-width:50ch}
+.sizes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+.size{min-width:3.2rem;padding:.6rem .8rem;border-radius:.6rem;border:1px solid var(--line);background:var(--paper);font-weight:600;font-size:.88rem;color:var(--ink)}
+.size[aria-pressed="true"]{border-color:var(--espresso);background:var(--espresso);color:var(--bg)}
+.size:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.spec{margin-top:1.75rem;border-top:1px solid var(--line)}
+.spec div{display:flex;justify-content:space-between;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.spec dt{color:var(--muted)}
+.spec dd{margin:0;text-align:right;font-weight:500}
+.pdp-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.crumb{font-size:.8rem;color:var(--muted);padding-top:1.5rem}
+.crumb a{text-decoration:none}
+.crumb a:hover{color:var(--terra)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-variant-numeric:tabular-nums}
+th,td{padding:.9rem 1rem;text-align:left;border-bottom:1px solid var(--line);font-size:.92rem}
+th{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--blush)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--f-display);font-size:1.15rem}
+.two{display:grid;gap:2rem}
+@media(min-width:900px){.two{grid-template-columns:1fr 1fr;gap:3.5rem}}
+.prose h2{font-size:1.8rem;margin-bottom:.75rem}
+.prose p+p{margin-top:.9rem}
+.prose p{color:var(--muted);max-width:60ch}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:1rem;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2.5rem 1fr;gap:.75rem;align-items:start;padding:1rem 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);font-family:var(--f-display);font-size:1.7rem;color:var(--terra);line-height:1}
+.field{display:grid;gap:.4rem;margin-bottom:1rem}
+.field label{font-size:.82rem;font-weight:600}
+.field input,.field select,.field textarea{font:inherit;padding:.8rem .9rem;border-radius:.6rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);width:100%}
+.field textarea{min-height:7rem;resize:vertical}
+.note{padding:1rem 1.2rem;border-radius:var(--r);background:var(--blush);font-size:.9rem}
+.copy-row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-top:.5rem}
+.copy-row code{font-family:var(--f-body);font-weight:600;font-size:1.05rem;user-select:all;font-variant-numeric:tabular-nums}
+.mini-btn{padding:.35rem .75rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-size:.78rem;font-weight:600;color:var(--ink)}
+.empty{text-align:center;padding-block:4rem;display:grid;gap:1rem;justify-items:center}
+.empty h2{font-size:2rem}
+.empty p{color:var(--muted);max-width:40ch}
+.toast{position:fixed;left:50%;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(140%);background:var(--ink);color:var(--bg);padding:.75rem 1.2rem;border-radius:999px;font-size:.88rem;z-index:80;transition:transform .3s ease;max-width:calc(100% - 2rem)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.demo-note{font-size:.72rem;color:var(--muted);text-align:center;padding-block:.75rem;background:var(--bg)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="announce">Koleksi terbaru: <b>Kapuas Pagi</b> — stok terbatas per ukuran.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#/" aria-label="St@yLE, beranda">St<span class="at">@</span>yLE <small>Ready-to-Wear Lokal</small></a>
+    <nav class="nav-links" aria-label="Utama">
+      <a href="#/katalog" data-nav="katalog">Katalog</a>
+      <a href="#/size-guide" data-nav="size-guide">Size Guide</a>
+      <a href="#/tentang" data-nav="tentang">Tentang</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href="#/wishlist" aria-label="Wishlist">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.9 4 7.4 4c2 0 3.6 1.1 4.6 2.7C13 5.1 14.6 4 16.6 4c3.5 0 5.8 3.6 4.6 7.1-1.7 4.8-9.2 9.4-9.2 9.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span class="count" id="wlCount">0</span>
+      </a>
+      <a class="btn btn-wa" href="https://wa.me/6281234567890?text=Halo%20St%40yLE%2C%20saya%20mau%20tanya%20koleksi" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8.2 19z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <span class="lbl">Chat WhatsApp</span>
+      </a>
+      <button class="icon-btn burger" id="burger" aria-expanded="false" aria-controls="mMenu" aria-label="Buka menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="wrap mobile-menu" id="mMenu" hidden>
+    <a href="#/katalog">Katalog</a>
+    <a href="#/size-guide">Size Guide</a>
+    <a href="#/tentang">Tentang</a>
+    <a href="#/kontak">Kontak</a>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#/">St<span class="at">@</span>yLE</a>
+        <p class="desc">Label ready-to-wear lokal dari Pontianak, berdiri 2026. Kami bikin baju sehari-hari yang rapi, dengan produksi kecil supaya tiap desain tetap terasa milikmu.</p>
+      </div>
+      <div>
+        <h4>Belanja</h4>
+        <ul>
+          <li><a href="#/katalog">Katalog</a></li>
+          <li><a href="#/katalog?k=Dress">Dress</a></li>
+          <li><a href="#/katalog?k=Atasan">Atasan</a></li>
+          <li><a href="#/wishlist">Wishlist</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Bantuan</h4>
+        <ul>
+          <li><a href="#/size-guide">Size Guide</a></li>
+          <li><a href="#/size-guide">Tukar Ukuran</a></li>
+          <li><a href="#/tentang">Tentang Kami</a></li>
+          <li><a href="#/kontak">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Admin</h4>
+        <ul class="hours">
+          <li>Senin–Jumat · 09.00–20.00 WIB</li>
+          <li>Sabtu · 10.00–17.00 WIB</li>
+          <li>WA: 0812-3456-7890</li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener">IG: @stayle.lokal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 St@yLE. Pontianak, Kalimantan Barat.</span>
+      <span>Situs demo — merek fiktif, tanpa transaksi sungguhan.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const WA_NUM = "6281234567890";
+const WA_TXT = "0812-3456-7890";
+const LIMIT = 40;
+
+/* Ilustrasi garis pakaian untuk placeholder foto */
+const G = {
+  Dress:'<path d="M80 18c6 10 14 14 20 14s14-4 20-14l14 6-6 34c-2 10 2 18 8 30l24 110H40l24-110c6-12 10-20 8-30l-6-34z"/><path d="M76 92h48" />',
+  Atasan:'<path d="M70 26l16-8c4 8 8 12 14 12s10-4 14-12l16 8 30 22-14 26-18-10v86H72V64l-18 10-14-26z"/><path d="M86 18c0 0 4 18 14 18s14-18 14-18"/>',
+  Bawahan:'<path d="M62 22h76l12 176h-38l-12-120-12 120H50z"/><path d="M62 40h76"/><path d="M100 40v20"/>',
+  Outer:'<path d="M74 20l-28 14-16 74 20 6 10-40v124h36V54l-10-28zM126 20l28 14 16 74-20 6-10-40v124h-36V54l10-28z"/><path d="M90 22c4 12 6 22 10 32 4-10 6-20 10-32"/>'
+};
+function garment(cat, color){
+  return `<svg class="garment" viewBox="0 0 200 210" fill="none" stroke="${color||'#3E2C23'}" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${G[cat]}</svg>`;
+}
+
+/* Lokasi foto (folder img/ di samping index.html) */
+const IMG = {
+  hero:"img/hero.jpg",
+  jahit:"img/jahit.jpg",
+  produk:{ "dress-sekar-linen":"img/dress-sekar-linen.jpg", "kemeja-laras-oversize":"img/kemeja-laras-oversize.jpg", "kulot-sanja-plisket":"img/kulot-sanja-plisket.jpg", "outer-rinai-batwing":"img/outer-rinai-batwing.jpg", "blouse-kirana-puff":"img/blouse-kirana-puff.jpg", "dress-wulan-tiered":"img/dress-wulan-tiered.jpg", "rok-tara-midi":"img/rok-tara-midi.jpg", "outer-gendhis-kimono":"img/outer-gendhis-kimono.jpg" },
+  kategori:{ Dress:"img/cat-Dress.jpg", Atasan:"img/cat-Atasan.jpg", Bawahan:"img/cat-Bawahan.jpg", Outer:"img/cat-Outer.jpg" }
+};
+
+const PRODUCTS = [
+  {slug:"dress-sekar-linen",name:"Dress Sekar Linen",cat:"Dress",price:349000,badge:"BARU",tone:["#E9D3C2","#D6B29A"],bahan:"Linen rami campur, adem & tidak menerawang",sisa:{S:6,M:9,L:4,XL:0},desc:"Dress midi berpotongan A-line dengan kerah bulat dan saku samping. Jatuh lurus, enak dipakai kerja maupun nongkrong sore di tepian Kapuas."},
+  {slug:"kemeja-laras-oversize",name:"Kemeja Laras Oversize",cat:"Atasan",price:259000,badge:"RESTOCK",tone:["#EFE3D6","#D9C4AE"],bahan:"Katun linen, sedikit tebal, minim kusut",sisa:{S:8,M:11,L:7,XL:5},desc:"Kemeja oversize dengan bahu turun dan kancing batok. Bisa dimasukkan ke celana atau dipakai terbuka sebagai outer tipis."},
+  {slug:"kulot-sanja-plisket",name:"Kulot Sanja Plisket",cat:"Bawahan",price:249000,badge:"SISA SEDIKIT",tone:["#E7CBB6","#C9987A"],bahan:"Hyget premium, plisket permanen",sisa:{S:2,M:1,L:3,XL:0},desc:"Kulot plisket kaki lebar dengan pinggang karet belakang. Lipitan tetap rapi setelah dicuci, terlihat seperti rok saat melangkah."},
+  {slug:"outer-rinai-batwing",name:"Outer Rinai Batwing",cat:"Outer",price:369000,badge:"BARU",tone:["#D9C2AF","#A88069"],bahan:"Katun linen tekstur, jatuh ringan",sisa:{S:5,M:7,L:6,XL:3},desc:"Outer berlengan batwing yang menyatu dari bahu ke ketiak. Longgar, ringan, dan menutup lengan dengan rapi tanpa terasa gerah."},
+  {slug:"blouse-kirana-puff",name:"Blouse Kirana Puff",cat:"Atasan",price:219000,badge:"SISA SEDIKIT",tone:["#F1E4DA","#E0C3B0"],bahan:"Rayon twill, jatuh & ringan",sisa:{S:0,M:2,L:1,XL:2},desc:"Blouse chambray biru dengan lengan puff dan kerah V kecil. Manis tapi tetap pantas untuk kantor."},
+  {slug:"dress-wulan-tiered",name:"Dress Wulan Tiered",cat:"Dress",price:379000,badge:"RESTOCK",tone:["#EADBCB","#C7A68E"],bahan:"Katun voile dengan furing",sisa:{S:5,M:8,L:6,XL:4},desc:"Dress panjang bersusun tiga tingkat dengan tali pinggang lepas pasang. Bergerak ringan saat berjalan, kancing depan aman untuk busui."},
+  {slug:"rok-tara-midi",name:"Rok Tara Midi",cat:"Bawahan",price:239000,badge:"BARU",tone:["#E3D2C1","#B99A82"],bahan:"Linen campur, pinggang karet belakang",sisa:{S:7,M:10,L:8,XL:6},desc:"Rok bersusun dengan kerut lembut di pinggang dan panjang semata kaki. Mudah dipadukan dengan kemeja maupun kaus polos."},
+  {slug:"outer-gendhis-kimono",name:"Outer Gendhis Kimono",cat:"Outer",price:389000,badge:"BARU",tone:["#E5C8B3","#B57C5F"],bahan:"Katun rayon bermotif cap",sisa:{S:4,M:5,L:4,XL:2},desc:"Outer kimono bermotif daun bergaya batik di atas dasar hitam. Satu ukuran per batch sangat terbatas."}
+];
+const HOME_SLUGS = PRODUCTS.slice(0,6).map(p=>p.slug);
+const rp = n => "Rp" + n.toLocaleString("id-ID");
+const totalSisa = p => Object.values(p.sisa).reduce((a,b)=>a+b,0);
+const badgeClass = b => b==="RESTOCK"?"restock":b==="SISA SEDIKIT"?"sisa":"";
+
+/* Wishlist (penyimpanan lokal per pengunjung) */
+let wish = [];
+try{ wish = JSON.parse(localStorage.getItem("stayle-wish")||"[]"); if(!Array.isArray(wish)) wish=[]; }catch(e){ wish=[]; }
+function saveWish(){ try{ localStorage.setItem("stayle-wish", JSON.stringify(wish)); }catch(e){} updateCount(); }
+function updateCount(){ document.getElementById("wlCount").textContent = wish.length; }
+function toggleWish(slug){
+  const p = PRODUCTS.find(x=>x.slug===slug);
+  if(wish.includes(slug)){ wish = wish.filter(s=>s!==slug); toast(`${p.name} dihapus dari wishlist`); }
+  else { wish.push(slug); toast(`${p.name} disimpan ke wishlist`); }
+  saveWish();
+  document.querySelectorAll(`[data-wish="${slug}"]`).forEach(b=>b.setAttribute("aria-pressed", wish.includes(slug)));
+  if(currentRoute()==="wishlist") render();
+}
+let tt;
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),2200); }
+
+const heartSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.9 4 7.4 4c2 0 3.6 1.1 4.6 2.7C13 5.1 14.6 4 16.6 4c3.5 0 5.8 3.6 4.6 7.1-1.7 4.8-9.2 9.4-9.2 9.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+
+function photo(p, extra=""){
+  const src = IMG.produk[p.slug];
+  const inner = src ? `<img class="ph-img" src="${src}" alt="${p.name}" loading="lazy">` : `${garment(p.cat)}<span class="ph-tag">Foto · ${p.name}</span>`;
+  return `<div class="ph" style="background:linear-gradient(165deg,${p.tone[0]},${p.tone[1]})">${inner}${extra}</div>`;
+}
+function card(p){
+  const s = totalSisa(p);
+  return `<article class="card">
+    <a href="#/produk/${p.slug}" aria-label="${p.name}" style="text-decoration:none">
+      ${photo(p, `<span class="badge ${badgeClass(p.badge)}">${p.badge}</span>`)}
+    </a>
+    <div class="card-body">
+      <span class="card-meta">${p.cat} · sisa ${s} pcs</span>
+      <h3><a href="#/produk/${p.slug}" style="text-decoration:none">${p.name}</a></h3>
+      <div class="card-row"><span class="price">${rp(p.price)}</span><a href="#/produk/${p.slug}">Lihat Detail</a></div>
+    </div>
+  </article>`;
+}
+/* Pasang tombol hati di atas foto kartu */
+function attachHearts(root){
+  root.querySelectorAll(".card").forEach(c=>{
+    const slug = c.querySelector("a").getAttribute("href").split("/").pop();
+    const ph = c.querySelector(".ph");
+    const b = document.createElement("button");
+    b.className="heart"; b.dataset.wish=slug; b.type="button";
+    b.setAttribute("aria-label","Simpan ke wishlist"); b.setAttribute("aria-pressed", wish.includes(slug));
+    b.innerHTML = heartSvg;
+    b.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();toggleWish(slug)});
+    ph.appendChild(b);
+  });
+}
+
+/* ===== Halaman ===== */
+const views = {};
+
+views.home = () => {
+  const items = HOME_SLUGS.map(s=>PRODUCTS.find(p=>p.slug===s));
+  const catCount = c => PRODUCTS.filter(p=>p.cat===c).length;
+  const catTone = {Dress:["#EAD5C5","#CFA88F"],Atasan:["#F0E5DA","#D8C1AC"],Bawahan:["#E2CAB7","#BC8F74"],Outer:["#D8BFAC","#9F7761"]};
+  return `
+  <section class="hero" aria-label="Koleksi Kapuas Pagi">
+    <div class="hero-art" aria-hidden="true">
+      ${IMG.hero ? `<img class="ph-img" src="${IMG.hero}" alt="">` : ""}
+      <svg ${IMG.hero ? "hidden" : ""} viewBox="0 0 400 600" fill="none" stroke="#F3E8E0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="210" cy="78" r="30" stroke-opacity=".7"/>
+        <path d="M196 106c-2 12-2 20 0 28M224 106c2 12 2 20 0 28" stroke-opacity=".6"/>
+        <path d="M168 140c14-8 28-10 42-10s28 2 42 10l18 120c3 20 10 40 22 70l40 230H88l40-230c12-30 19-50 22-70z" stroke-opacity=".85"/>
+        <path d="M160 250h120" stroke-opacity=".5"/>
+        <path d="M168 140l-30 40-14 110M252 140l30 40 14 110" stroke-opacity=".6"/>
+        <path d="M150 330l-20 230M270 330l20 230M210 260v300" stroke-opacity=".25"/>
+      </svg>
+    </div>
+    <div class="hero-meta">Lookbook 01 · Pontianak<br>Kapuas Pagi — Okt 2026</div>
+    <div class="wrap hero-in">
+      <span class="eyebrow">Ready-to-Wear Lokal · Sejak 2026</span>
+      <h1>Pakaian yang <em>ga pasaran,</em> dibuat terbatas.</h1>
+      <p class="sub">Produksi kecil per desain. Bagan ukuran jujur. Bisa tukar ukuran.</p>
+      <div class="ctas">
+        <a class="btn btn-light" href="#/katalog">Lihat Koleksi</a>
+        <a class="btn btn-outline-light" href="#/size-guide">Cek Panduan Ukuran</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" aria-label="Janji kami">
+    <div class="wrap"><ul>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Produksi terbatas</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9h18v6H3zM7 9v3M11 9v3M15 9v3M19 9v3" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Size chart real, bukan asal</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9h13l-3-3M20 15H7l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Tukar ukuran 3 hari</li>
+    </ul></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Koleksi Kapuas Pagi</span><h2>Koleksi Terbaru</h2></div>
+        <a class="link-arrow" href="#/katalog">Lihat semua koleksi →</a>
+      </div>
+      <div class="grid" id="homeGrid">${items.map(card).join("")}</div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Belanja per kategori</span><h2>Pilih dari lemari kami</h2></div></div>
+      <div class="cats">
+        ${["Dress","Atasan","Bawahan","Outer"].map(c=>`
+          <a class="cat" href="#/katalog?k=${c}">
+            <div class="ph" style="background:linear-gradient(165deg,${catTone[c][0]},${catTone[c][1]})">${IMG.kategori[c] ? `<img class="ph-img" src="${IMG.kategori[c]}" alt="Kategori ${c}" loading="lazy">` : garment(c)}</div>
+            <div class="cat-row"><h3>${c}</h3><span>${catCount(c)} desain</span></div>
+          </a>`).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section class="section why">
+    <div class="wrap why-grid">
+      <div class="ph" aria-label="Foto proses jahit">
+        ${IMG.jahit ? `<img class="ph-img" src="${IMG.jahit}" alt="Kain linen dijahit di workshop">` : ""}
+        <svg ${IMG.jahit ? "hidden" : ""} viewBox="0 0 400 500" fill="none" stroke="#3E2C23" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M60 330h280v22H60z" stroke-opacity=".8"/>
+          <path d="M110 330V220c0-20 14-32 34-32h120c22 0 36 14 36 34v18h-40v-14H150v104" stroke-opacity=".85"/>
+          <path d="M280 258v40M272 298h16" stroke-opacity=".8"/>
+          <path d="M150 330c30-14 80-20 160-6" stroke="#C96F4A" stroke-dasharray="4 6" stroke-opacity=".9"/>
+          <circle cx="250" cy="150" r="18" stroke-opacity=".5"/>
+          <path d="M250 132V90M232 112c10-10 26-10 36 0" stroke-opacity=".4"/>
+          <path d="M80 400h240M100 420h200" stroke-opacity=".3"/>
+        </svg>
+        ${IMG.jahit ? "" : `<span class="ph-tag">Foto · meja jahit di workshop</span>`}
+      </div>
+      <div>
+        <span class="eyebrow">Kenapa terbatas?</span>
+        <h2>Tiap desain cuma <em>${LIMIT} pcs.</em></h2>
+        <p class="lead">Kami sengaja memproduksi sedikit. Setiap desain dijahit ${LIMIT} potong saja, dibagi ke empat ukuran, oleh penjahit rekanan di Pontianak.</p>
+        <p class="body">Jumlah kecil membuat baju yang kamu pakai jarang kembaran di jalan. Kami juga tidak menumpuk stok yang akhirnya dibuang atau dijual obral. Kain sisa potongan kami olah jadi scrunchie dan kantong belanja.</p>
+        <div class="numbers">
+          <div><b>${LIMIT}</b><span>pcs per desain, dibagi 4 ukuran</span></div>
+          <div><b>3</b><span>penjahit rekanan lokal</span></div>
+          <div><b>±12%</b><span>sisa kain dipakai ulang</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Kata mereka</span><h2>Bahan dan ukurannya pas</h2></div></div>
+      <div class="testi">
+        <figure class="quote" style="margin:0"><span class="mark" aria-hidden="true">“</span>
+          <p>Aku ukur dada pakai meteran sesuai panduan, pilih M, dan beneran pas. Linen-nya adem, ga nerawang walau warna terang.</p>
+          <figcaption class="who"><div><b>Rara A.</b><span>Pontianak</span></div><span class="fit">Dress Sekar · M</span></figcaption></figure>
+        <figure class="quote" style="margin:0"><span class="mark" aria-hidden="true">“</span>
+          <p>Biasanya beli online selalu kekecilan. Di sini admin bantu cek lingkar pinggang dulu, dan pas sampai jahitannya rapi sampai dalam.</p>
+          <figcaption class="who"><div><b>Nadia P.</b><span>Singkawang</span></div><span class="fit">Kulot Sanja · L</span></figcaption></figure>
+        <figure class="quote" style="margin:0"><span class="mark" aria-hidden="true">“</span>
+          <p>Sempat salah pilih ukuran outer, ternyata tukarnya gampang, cukup chat WA dan kirim balik. Bahannya tebal, ga gampang kusut.</p>
+          <figcaption class="who"><div><b>Meilani S.</b><span>Jakarta Selatan</span></div><span class="fit">Outer Rinai · S→M</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-in">
+      <h2>Sekali <em>SOLD OUT,</em> jarang restock. Amankan size lu.</h2>
+      <a class="btn btn-light" href="#/katalog">Lihat Koleksi</a>
+    </div>
+  </section>`;
+};
+
+views.katalog = (q) => {
+  const k = q.get("k") || "Semua";
+  const list = k==="Semua" ? PRODUCTS : PRODUCTS.filter(p=>p.cat===k);
+  return `
+  <section class="page-head"><div class="wrap">
+    <span class="eyebrow">Koleksi Kapuas Pagi</span><h1>Katalog</h1>
+    <p>${PRODUCTS.length} desain, masing-masing ${LIMIT} pcs. Angka sisa di tiap kartu adalah total semua ukuran.</p>
+  </div></section>
+  <section class="section" style="padding-top:2rem"><div class="wrap">
+    <div class="filters" role="group" aria-label="Filter kategori">
+      ${["Semua","Dress","Atasan","Bawahan","Outer"].map(c=>`<a class="chip" style="text-decoration:none" href="#/katalog${c==="Semua"?"":"?k="+c}" aria-pressed="${c===k}">${c}</a>`).join("")}
+    </div>
+    <div class="grid">${list.map(card).join("")}</div>
+  </div></section>`;
+};
+
+views.produk = (q, slug) => {
+  const p = PRODUCTS.find(x=>x.slug===slug);
+  if(!p) return views.notfound();
+  const firstAvail = Object.keys(p.sisa).find(s=>p.sisa[s]>0);
+  return `
+  <div class="wrap crumb"><a href="#/">Beranda</a> / <a href="#/katalog">Katalog</a> / <a href="#/katalog?k=${p.cat}">${p.cat}</a> / ${p.name}</div>
+  <div class="wrap pdp">
+    ${photo(p, `<span class="badge ${badgeClass(p.badge)}">${p.badge}</span>`)}
+    <div>
+      <span class="eyebrow">${p.cat} · Koleksi Kapuas Pagi</span>
+      <h1>${p.name}</h1>
+      <span class="price">${rp(p.price)}</span>
+      <p class="desc">${p.desc}</p>
+      <div style="margin-top:1.75rem">
+        <div style="display:flex;justify-content:space-between;gap:1rem;font-size:.85rem"><b>Pilih ukuran</b><a href="#/size-guide" style="color:var(--terra)">Lihat panduan ukuran</a></div>
+        <div class="sizes" role="group" aria-label="Ukuran">
+          ${Object.keys(p.sisa).map(s=>`<button type="button" class="size" data-size="${s}" ${p.sisa[s]===0?"disabled":""} aria-pressed="${s===firstAvail}">${s}</button>`).join("")}
+        </div>
+        <p class="stock-note" id="sizeNote" style="margin-top:.6rem"></p>
+      </div>
+      <div class="pdp-actions">
+        <a class="btn btn-primary" id="waBtn" target="_blank" rel="noopener" href="#">Tanya via WhatsApp</a>
+        <button class="btn btn-ghost" type="button" data-wish="${p.slug}" aria-pressed="${wish.includes(p.slug)}" id="pdpWish">${wish.includes(p.slug)?"Tersimpan di wishlist":"Simpan ke wishlist"}</button>
+      </div>
+      <dl class="spec">
+        <div><dt>Bahan</dt><dd>${p.bahan}</dd></div>
+        <div><dt>Produksi</dt><dd>${LIMIT} pcs, sisa ${totalSisa(p)}</dd></div>
+        <div><dt>Tukar ukuran</dt><dd>Maks. 3 hari setelah barang diterima</dd></div>
+        <div><dt>Perawatan</dt><dd>Cuci tangan, jangan diperas, setrika suhu sedang</dd></div>
+      </dl>
+    </div>
+  </div>`;
+};
+
+views["size-guide"] = () => `
+  <section class="page-head"><div class="wrap">
+    <span class="eyebrow">Ukur dulu, baru checkout</span><h1>Size Guide</h1>
+    <p>Semua angka di bawah diukur langsung dari baju jadi, bukan dari pola. Toleransi jahitan ±1 cm.</p>
+  </div></section>
+  <section class="section" style="padding-top:2.5rem"><div class="wrap two">
+    <div>
+      <h2 style="font-size:1.6rem;margin-bottom:1rem">Ukuran badan (cm)</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Ukuran</th><th>Lingkar dada</th><th>Lingkar pinggang</th><th>Lingkar pinggul</th></tr></thead>
+        <tbody>
+          <tr><td>S</td><td>84–88</td><td>66–70</td><td>90–94</td></tr>
+          <tr><td>M</td><td>89–93</td><td>71–75</td><td>95–99</td></tr>
+          <tr><td>L</td><td>94–99</td><td>76–81</td><td>100–105</td></tr>
+          <tr><td>XL</td><td>100–106</td><td>82–88</td><td>106–112</td></tr>
+        </tbody></table></div>
+      <p class="stock-note" style="margin-top:.75rem">Di antara dua ukuran? Pilih yang lebih besar untuk potongan oversize, atau chat admin dengan ukuranmu.</p>
+    </div>
+    <div>
+      <h2 style="font-size:1.6rem;margin-bottom:1rem">Cara mengukur</h2>
+      <ol class="steps">
+        <li><div><b>Lingkar dada</b><br><span class="stock-note">Lingkarkan meteran di bagian dada paling penuh, sejajar lantai.</span></div></li>
+        <li><div><b>Lingkar pinggang</b><br><span class="stock-note">Ukur di bagian tersempit, kira-kira 2 jari di atas pusar.</span></div></li>
+        <li><div><b>Lingkar pinggul</b><br><span class="stock-note">Ukur di bagian pinggul paling lebar, kaki rapat.</span></div></li>
+      </ol>
+      <div class="note" style="margin-top:1.5rem"><b>Tukar ukuran 3 hari.</b> Hubungi admin maksimal 3 hari setelah paket diterima. Baju belum dicuci dan label masih terpasang. Ongkir kirim balik ditanggung pembeli, ongkir kirim ulang kami tanggung.</div>
+    </div>
+  </div></section>`;
+
+views.tentang = () => `
+  <section class="page-head"><div class="wrap">
+    <span class="eyebrow">Tentang St@yLE</span><h1>Dari Pontianak, sejak 2026</h1>
+  </div></section>
+  <section class="section" style="padding-top:2.5rem"><div class="wrap two">
+    <div class="ph" style="aspect-ratio:4/3;background:linear-gradient(160deg,#EAD5C5,#B98A6E)"><img class="ph-img" src="${IMG.jahit}" alt="Proses jahit di workshop St@yLE" loading="lazy"></div>
+    <div class="prose">
+      <h2>Baju sehari-hari yang rapi</h2>
+      <p>St@yLE berdiri tahun 2026 di Pontianak. Kami bikin baju sehari-hari yang rapi, dengan produksi kecil supaya tiap desain tetap terasa milikmu.</p>
+      <p>Setiap desain dijahit ${LIMIT} pcs oleh penjahit rekanan lokal. Kami mengukur setiap baju jadi untuk size chart, jadi angka yang kamu lihat sama dengan baju yang kamu terima.</p>
+      <p>Kalau ukurannya tetap meleset, kamu bisa tukar dalam 3 hari. Belanja online seharusnya tidak bikin was-was.</p>
+    </div>
+  </div></section>`;
+
+views.kontak = () => `
+  <section class="page-head"><div class="wrap">
+    <span class="eyebrow">Kontak</span><h1>Ngobrol dengan admin</h1>
+    <p>Cara tercepat adalah WhatsApp. Admin bantu cek ukuran, stok, dan tukar ukuran.</p>
+  </div></section>
+  <section class="section" style="padding-top:2.5rem"><div class="wrap two">
+    <div>
+      <div class="note">
+        <b>WhatsApp admin</b>
+        <div class="copy-row"><code id="waNum">${WA_TXT}</code><button class="mini-btn" type="button" id="copyWa">Salin nomor</button></div>
+        <p class="stock-note" style="margin-top:.75rem">Senin–Jumat 09.00–20.00 WIB · Sabtu 10.00–17.00 WIB. Minggu & tanggal merah libur.</p>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.75rem">
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/${WA_NUM}?text=${encodeURIComponent("Halo St@yLE, saya mau tanya")}">Buka WhatsApp</a>
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://instagram.com">IG @stayle.lokal</a>
+      </div>
+    </div>
+    <form id="contactForm" novalidate>
+      <div class="field"><label for="cNama">Nama</label><input id="cNama" required placeholder="Nama kamu"></div>
+      <div class="field"><label for="cTopik">Topik</label><select id="cTopik"><option>Tanya ukuran</option><option>Cek stok</option><option>Tukar ukuran</option><option>Lainnya</option></select></div>
+      <div class="field"><label for="cPesan">Pesan</label><textarea id="cPesan" required placeholder="Contoh: lingkar dada 90 cm, cocok ukuran apa untuk Dress Sekar?"></textarea></div>
+      <button class="btn btn-primary" type="submit">Siapkan pesan WhatsApp</button>
+      <p class="stock-note" id="formMsg" style="margin-top:.75rem">Formulir ini menyusun pesan lalu membuka WhatsApp. Tidak ada data yang dikirim ke server.</p>
+    </form>
+  </div></section>`;
+
+views.wishlist = () => {
+  const list = wish.map(s=>PRODUCTS.find(p=>p.slug===s)).filter(Boolean);
+  if(!list.length) return `
+    <section class="page-head"><div class="wrap"><span class="eyebrow">Wishlist</span><h1>Simpanan kamu</h1></div></section>
+    <div class="wrap empty">
+      <h2>Wishlist masih kosong</h2>
+      <p>Tekan ikon hati di foto produk untuk menyimpannya di sini. Wishlist tersimpan di browser ini saja.</p>
+      <a class="btn btn-primary" href="#/katalog">Lihat Koleksi</a>
+    </div>`;
+  const msg = "Halo St@yLE, saya tertarik dengan: " + list.map(p=>p.name).join(", ");
+  return `
+    <section class="page-head"><div class="wrap"><span class="eyebrow">Wishlist</span><h1>Simpanan kamu</h1>
+      <p>${list.length} produk tersimpan · total ${rp(list.reduce((a,p)=>a+p.price,0))}</p>
+      <div style="margin-top:1.25rem"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}">Tanyakan semua via WhatsApp</a></div>
+    </div></section>
+    <section class="section" style="padding-top:2.5rem"><div class="wrap"><div class="grid">${list.map(card).join("")}</div></div></section>`;
+};
+
+views.notfound = () => `<div class="wrap empty"><h2>Halaman tidak ditemukan</h2><p>Mungkin produknya sudah sold out.</p><a class="btn btn-primary" href="#/katalog">Kembali ke Katalog</a></div>`;
+
+/* ===== Router (hash) ===== */
+function parse(){
+  const h = location.hash.replace(/^#\/?/,"");
+  const [path, qs] = h.split("?");
+  const parts = (path||"").split("/").filter(Boolean);
+  return {parts, q:new URLSearchParams(qs||"")};
+}
+function currentRoute(){ return parse().parts[0] || "home"; }
+function render(){
+  const {parts,q} = parse();
+  const r = parts[0] || "home";
+  const app = document.getElementById("app");
+  app.innerHTML = (views[r] ? views[r](q, parts[1]) : views.notfound());
+  attachHearts(app);
+  document.querySelectorAll("[data-nav]").forEach(a=>a.classList.toggle("active", a.dataset.nav===r));
+  document.getElementById("mMenu").hidden = true;
+  document.getElementById("burger").setAttribute("aria-expanded","false");
+  if(r==="produk") bindPdp(parts[1]);
+  if(r==="kontak") bindKontak();
+}
+function bindPdp(slug){
+  const p = PRODUCTS.find(x=>x.slug===slug); if(!p) return;
+  const note = document.getElementById("sizeNote"), wa = document.getElementById("waBtn");
+  const set = s => {
+    document.querySelectorAll(".size").forEach(b=>b.setAttribute("aria-pressed", b.dataset.size===s));
+    const n = p.sisa[s];
+    note.textContent = n<=3 ? `Ukuran ${s}: sisa ${n} pcs. Hampir habis.` : `Ukuran ${s}: sisa ${n} pcs.`;
+    wa.href = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(`Halo St@yLE, saya mau tanya ${p.name} ukuran ${s} (${rp(p.price)}). Masih ada?`)}`;
+  };
+  document.querySelectorAll(".size:not(:disabled)").forEach(b=>b.addEventListener("click",()=>set(b.dataset.size)));
+  const first = Object.keys(p.sisa).find(s=>p.sisa[s]>0); if(first) set(first);
+  const w = document.getElementById("pdpWish");
+  w.addEventListener("click",()=>{ toggleWish(slug); w.textContent = wish.includes(slug)?"Tersimpan di wishlist":"Simpan ke wishlist"; });
+}
+function bindKontak(){
+  document.getElementById("copyWa").addEventListener("click",e=>{
+    const b=e.currentTarget;
+    const done=()=>{b.textContent="Tersalin"; setTimeout(()=>b.textContent="Salin nomor",1800)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById("waNum"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Nomor terpilih, tekan salin";};
+    try{ navigator.clipboard.writeText(WA_TXT).then(done,fallback); }catch(err){ fallback(); }
+  });
+  document.getElementById("contactForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const n=document.getElementById("cNama").value.trim(), t=document.getElementById("cTopik").value, m=document.getElementById("cPesan").value.trim();
+    const out=document.getElementById("formMsg");
+    if(!n||!m){ out.textContent="Isi nama dan pesan dulu, ya."; out.style.color="var(--terra-dark)"; return; }
+    const url=`https://wa.me/${WA_NUM}?text=${encodeURIComponent(`Halo St@yLE, saya ${n}. Topik: ${t}. ${m}`)}`;
+    out.style.color=""; out.innerHTML=`Pesan siap. <a href="${url}" target="_blank" rel="noopener" style="color:var(--terra);font-weight:600">Buka di WhatsApp →</a> Kalau tidak terbuka, kirim manual ke ${WA_TXT}.`;
+  });
+}
+document.getElementById("burger").addEventListener("click",e=>{
+  const m=document.getElementById("mMenu"); m.hidden=!m.hidden; e.currentTarget.setAttribute("aria-expanded", String(!m.hidden));
+});
+addEventListener("hashchange",()=>{ render(); window.scrollTo(0,0); });
+updateCount();
+render();
+</script>
+
+</body>
+</html>
